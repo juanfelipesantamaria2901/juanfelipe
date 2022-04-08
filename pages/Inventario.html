@@ -1,0 +1,717 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+    <!-- fullCalendar -->
+    <link rel="stylesheet" href="../plugins/fullcalendar/main.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+    <title>Title</title>
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+    <style>
+        .modalDialog {
+            position: fixed;
+            font-family: Arial, Helvetica, sans-serif;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 99999;
+            opacity: 0;
+            -webkit-transition: opacity 400ms ease-in;
+            -moz-transition: opacity 400ms ease-in;
+            transition: opacity 400ms ease-in;
+            pointer-events: none;
+        }
+
+        .modalDialog:target {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modalDialog>div {
+            height: 100%;
+            overflow: auto;
+            width: 70%;
+            margin: 10px;
+            border-radius: 10px;
+            background: #fff;
+            background: -moz-linear-gradient(#fff, #999);
+            background: -webkit-linear-gradient(#fff, #999);
+            background: -o-linear-gradient(#fff, #999);
+            -webkit-transition: opacity 400ms ease-in;
+            -moz-transition: opacity 400ms ease-in;
+            transition: opacity 400ms ease-in;
+        }
+
+        .close {
+            background: #606061;
+            color: #FFFFFF;
+            line-height: 25px;
+            position: absolute;
+            right: -12px;
+            text-align: center;
+            top: -10px;
+            width: 24px;
+            text-decoration: none;
+            font-weight: bold;
+            -webkit-border-radius: 12px;
+            -moz-border-radius: 12px;
+            border-radius: 12px;
+            -moz-box-shadow: 1px 1px 3px #000;
+            -webkit-box-shadow: 1px 1px 3px #000;
+            box-shadow: 1px 1px 3px #000;
+        }
+
+        .close:hover {
+            background: #00d9ff;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-gradient-secondary">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <a class="navbar-brand" href="Caja.html"><strong><i class="icon fa fa-eye"></i> Aplicativo
+                        Rivera</strong></a>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="index.html"><b>Dashboard</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="Inventario.html"><b>Inventario</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Caja.html"><b>Caja</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="TablaRelacional.html"><b>Tabla Relacional</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="CuadreCartera.html"><b>Cartera</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="404.html"><b>404</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="500.html"><b>500</b></a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                    <button class="btn bg-gradient-orange" type="submit"><b>Buscar</b></button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Inventario</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="Caja.html">Regresar</a></li>
+                            <li class="breadcrumb-item active">INVENTARIO</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <div class="row col-3" style="margin: 10px;">
+            <a type="button" class="btn btn-secondary" href="#openModal4"><b>Adicionar</b></a>
+        </div>
+
+        <div id="Mantenimietnos" class="content">
+            <div class="card" style="margin: 15px;">
+                <div class="card-header bg-orange">
+                    <h3 class="card-title"><b>CONTROL MANGUERAS - NUMERADORES MECÁNICOS VS SISTEMA</b></h3>
+                </div>
+                <!-- ./card-header -->
+                <div class="card-body">
+                    <table
+                        class="table table-secondary table-striped table-hover table-bordered table-sm table-responsive-sm">
+                        <thead>
+                            <tr>
+                            <tr>
+                                <th>Sede</th>
+                                <th>Nro_reporte</th>
+                                <th>IdTurno</th>
+                                <th>Descripcion Turno</th>
+                                <th>Vendedor</th>
+                                <th>Isla</th>
+                                <th>Dispensador</th>
+                                <th>Manguera</th>
+                                <th>Producto</th>
+                                <th>Num_anterior</th>
+                                <th>Num_actual</th>
+                            </tr>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>287</td>
+                                <td>1880</td>
+                                <td>Mar 1 2022 5:58AM - Mar 1 2022 1:43PM</td>
+                                <td>MUÑOZ AGUIRRE DUVAN ALEJANDRO</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>SUPREME</td>
+                                <td>43859,38</td>
+                                <td>43905,19</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>287</td>
+                                <td>1880</td>
+                                <td>Mar 1 2022 5:58AM - Mar 1 2022 1:43PM</td>
+                                <td>MUÑOZ AGUIRRE DUVAN ALEJANDRO</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>SUPREME</td>
+                                <td>43859,38</td>
+                                <td>43905,19</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>287</td>
+                                <td>1880</td>
+                                <td>Mar 1 2022 5:58AM - Mar 1 2022 1:43PM</td>
+                                <td>MUÑOZ AGUIRRE DUVAN ALEJANDRO</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>SUPREME</td>
+                                <td>43859,38</td>
+                                <td>43905,19</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>287</td>
+                                <td>1880</td>
+                                <td>Mar 1 2022 5:58AM - Mar 1 2022 1:43PM</td>
+                                <td>MUÑOZ AGUIRRE DUVAN ALEJANDRO</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>SUPREME</td>
+                                <td>43859,38</td>
+                                <td>43905,19</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>287</td>
+                                <td>1880</td>
+                                <td>Mar 1 2022 5:58AM - Mar 1 2022 1:43PM</td>
+                                <td>MUÑOZ AGUIRRE DUVAN ALEJANDRO</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>SUPREME</td>
+                                <td>43859,38</td>
+                                <td>43905,19</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>287</td>
+                                <td>1880</td>
+                                <td>Mar 1 2022 5:58AM - Mar 1 2022 1:43PM</td>
+                                <td>MUÑOZ AGUIRRE DUVAN ALEJANDRO</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>SUPREME</td>
+                                <td>43859,38</td>
+                                <td>43905,19</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+
+                <div id="Mantenimietnos" class="content">
+                    <div class="card" style="margin: 15px;">
+                        <div class="card-header bg-orange">
+                        </div>
+                        <!-- ./card-header -->
+                        <div class="card-body">
+                            <table
+                                class="table table-secondary table-striped table-hover table-bordered table-sm table-responsive-sm">
+                                <thead>
+                                    <tr>
+                                    <tr>
+                                        <th>Mecánicos Volumen Venta</th>
+                                        <th>Sistema Volumen Venta</th>
+                                        <th>Diferencia</th>
+                                    </tr>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>45,81</td>
+                                        <td>45,756</td>
+                                        <td>-0,054000000000002</td>
+                                    </tr>
+                                    <tr>
+                                        <td>45,81</td>
+                                        <td>45,756</td>
+                                        <td>-0,054000000000002</td>
+                                    </tr>
+                                    </tr>
+                                    <tr>
+                                        <td>45,81</td>
+                                        <td>45,756</td>
+                                        <td>-0,054000000000002</td>
+                                    </tr>
+                                    <tr>
+                                        <td>45,81</td>
+                                        <td>45,756</td>
+                                        <td>-0,054000000000002</td>
+                                    </tr>
+                                    <tr>
+                                        <td>45,81</td>
+                                        <td>45,756</td>
+                                        <td>-0,054000000000002</td>
+                                    </tr>
+                                    <tr>
+                                        <td>45,81</td>
+                                        <td>45,756</td>
+                                        <td>-0,054000000000002</td>
+                                    </tr>
+                                    <tr>
+                                        <td>45,81</td>
+                                        <td>45,756</td>
+                                        <td>-0,054000000000002</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+
+                <div id="openModal4" class="modalDialog">
+                    <div class="content-wrapper" style="min-height: 2171.6px;">
+                        <section class="content-header">
+                            <div class="container-fluid">
+                                <div class="row mb-2">
+                                    <div class="col-sm-6">
+                                        <h1> FORMULARIO INVENTARIO</h1>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <ol class="breadcrumb float-sm-right bg-transparent">
+                                            <li class="breadcrumb-item"><a href="#">Cerrar</a></li>
+                                            <li class="breadcrumb-item active">FORMULARIO INVENTARIO</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Main content -->
+                        <section class="content">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <!-- left column -->
+                                    <div class="col-md-12" style="  height: 950px;">
+
+                                        <!-- general form elements disabled -->
+                                        <div class="card card-warning">
+                                            <div class="card-header bg-gradient-orange">
+                                                <h3 class="card-title"><b>FORMULARIO INVENTARIO</b></h3>
+                                            </div>
+                                            <!-- /.card-header -->
+                                            <div class="card-body ">
+                                                <form>
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label>IdSede </label>
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Escribe ...">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label>IdTurno </label>
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Escribe ...">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label>Nro_reporte</label>
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Escribe ...">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label>Descripcion Turno</label>
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Escribe ...">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row" style="border-radius: 5px;">
+                                                        <div class="card-header bg-gradient-orange "></div>
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label>Vendedor</label>
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Escribe ...">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label>Isla</label>
+                                                                <select class="form-select"
+                                                                    aria-label="Default select example">
+                                                                    <option selected>Selecciona</option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label>Dispensador</label>
+                                                                <select class="form-select"
+                                                                    aria-label="Default select example">
+                                                                    <option selected>Selecciona</option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label>Manguera</label>
+                                                                <select class="form-select"
+                                                                    aria-label="Default select example">
+                                                                    <option selected>Selecciona</option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <label>Producto</label>
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Escribe ...">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <label>Num_anterior</label>
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Escribe ...">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <label>Num_actual</label>
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Escribe ...">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row" style="border-radius: 5px;">
+                                                        <div class="card-header bg-gradient-orange "></div>
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <label>Mecánicos Volumen Venta</label>
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Escribe...">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <label>Sistema Volumen Venta</label>
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Escribe...">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <label> Diferencia</label>
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Escribe...">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="col-sm-12">
+                                                        <button type="submit"
+                                                            class="btn btn-secondary float-right">Agregar</button>
+                                                    </div>
+                                            </div>
+                                            </form>
+                                        </div>
+                                        <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
+                                </div>
+                                <!-- /.card -->
+                            </div>
+                            <!--/.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+                </section>
+                <!-- /.content -->
+            </div>
+
+
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+                crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+                crossorigin="anonymous"></script>
+            <!-- Optional JavaScript -->
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                crossorigin="anonymous"></script>
+            <!-- AdminLTE App -->
+            <script src="./../dist/js/adminlte.min.js"></script>
+            <!-- FLOT CHARTS -->
+            <script src="./../plugins/flot/jquery.flot.js"></script>
+            <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+            <script src="./../plugins/flot/plugins/jquery.flot.resize.js"></script>
+            <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+            <script src="./../plugins/flot/plugins/jquery.flot.pie.js"></script>
+            <script src="../../plugins/jquery/jquery.min.js"></script>
+            <!-- AdminLTE for demo purposes -->
+            <script src="../dist/js/demo.js"></script>
+            <script src="http://cnd.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+            <script src="../dist/js/daterangepicker.js"></script>
+            <!-- Bootstrap Switch -->
+            <script src="../../plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+            <!-- InputMask -->
+            <script src="../../plugins/moment/moment.min.js"></script>
+            <script src="../../plugins/inputmask/jquery.inputmask.min.js"></script>
+            <!-- jQuery -->
+            <script src="./../plugins/jquery/jquery.min.js"></script>
+            <!-- Bootstrap 4 -->
+            <script src="./../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <!-- AdminLTE App -->
+            <script src="./../dist/js/adminlte.min.js"></script>
+            <!-- FLOT CHARTS -->
+            <script src="./../plugins/flot/jquery.flot.js"></script>
+            <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+            <script src="./../plugins/flot/plugins/jquery.flot.resize.js"></script>
+            <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+            <script src="./../plugins/flot/plugins/jquery.flot.pie.js"></script>
+            <script src="../../plugins/jquery/jquery.min.js"></script>
+            <!-- Bootstrap 4 -->
+            <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <!-- Select2 -->
+            <script src="../../plugins/select2/js/select2.full.min.js"></script>
+            <!-- Bootstrap4 Duallistbox -->
+            <script src="../../plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+            <!-- InputMask -->
+            <script src="../../plugins/moment/moment.min.js"></script>
+            <script src="../../plugins/inputmask/jquery.inputmask.min.js"></script>
+            <!-- date-range-picker -->
+            <script src="../../plugins/daterangepicker/daterangepicker.js"></script>
+            <!-- bootstrap color picker -->
+            <script src="../../plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+            <!-- Tempusdominus Bootstrap 4 -->
+            <script src="../../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+            <!-- Bootstrap Switch -->
+            <script src="../../plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+            <!-- BS-Stepper -->
+            <script src="../../plugins/bs-stepper/js/bs-stepper.min.js"></script>
+            <!-- dropzonejs -->
+            <script src="../../plugins/dropzone/min/dropzone.min.js"></script>
+            <!-- AdminLTE for demo purposes -->
+            <script src="../dist/js/demo.js"></script>
+            <script src="http://cnd.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+            <script src="../dist/js/daterangepicker.js"></script>
+            <!-- Page specific script -->
+            <script>
+                $(function () {
+                    //Initialize Select2 Elements
+                    $('.select2').select2()
+
+                    //Initialize Select2 Elements
+                    $('.select2bs4').select2({
+                        theme: 'bootstrap4'
+                    })
+
+                    //Datemask dd/mm/yyyy
+                    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+                    //Datemask2 mm/dd/yyyy
+                    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+                    //Money Euro
+                    $('[data-mask]').inputmask()
+
+                    //Date picker
+                    $('#reservationdate').datetimepicker({
+                        format: 'L'
+                    });
+
+                    //Date and time picker
+                    $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+
+                    //Date range picker
+                    $('#reservation').daterangepicker()
+                    //Date range picker with time picker
+                    $('#reservationtime').daterangepicker({
+                        timePicker: true,
+                        timePickerIncrement: 30,
+                        locale: {
+                            format: 'MM/DD/YYYY hh:mm A'
+                        }
+                    })
+
+
+                    //Timepicker
+                    $('#timepicker').datetimepicker({
+                        format: 'LT'
+                    })
+
+                    //Datemask dd/mm/yyyy
+                    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+                    //Datemask2 mm/dd/yyyy
+                    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+                    //Money Euro
+                    $('[data-mask]').inputmask()
+
+                    //Date picker
+                    $('#reservationdate').datetimepicker({
+                        format: 'L'
+                    });
+
+                    //Date and time picker
+                    $('#reservationdatetime1').datetimepicker({ icons: { time: 'far fa-clock' } });
+
+                    //Date range picker
+                    $('#reservation').daterangepicker()
+                    //Date range picker with time picker
+                    $('#reservationtime').daterangepicker({
+                        timePicker: true,
+                        timePickerIncrement: 30,
+                        locale: {
+                            format: 'MM/DD/YYYY hh:mm A'
+                        }
+                    })
+
+
+                    //Timepicker
+                    $('#timepicker').datetimepicker({
+                        format: 'LT'
+                    })
+
+
+                    //Bootstrap Duallistbox
+                    $('.duallistbox').bootstrapDualListbox()
+
+                    //Colorpicker
+                    $('.my-colorpicker1').colorpicker()
+                    //color picker with addon
+                    $('.my-colorpicker2').colorpicker()
+
+                    $('.my-colorpicker2').on('colorpickerChange', function (event) {
+                        $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+                    })
+
+                    $("input[data-bootstrap-switch]").each(function () {
+                        $(this).bootstrapSwitch('state', $(this).prop('checked'));
+                    })
+
+                })
+                // BS-Stepper Init
+                document.addEventListener('DOMContentLoaded', function () {
+                    window.stepper = new Stepper(document.querySelector('.bs-stepper'))
+                })
+
+                // DropzoneJS Demo Code Start
+                Dropzone.autoDiscover = false
+
+                // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
+                var previewNode = document.querySelector("#template")
+                previewNode.id = ""
+                var previewTemplate = previewNode.parentNode.innerHTML
+                previewNode.parentNode.removeChild(previewNode)
+
+                var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
+                    url: "/target-url", // Set the url
+                    thumbnailWidth: 80,
+                    thumbnailHeight: 80,
+                    parallelUploads: 20,
+                    previewTemplate: previewTemplate,
+                    autoQueue: false, // Make sure the files aren't queued until manually added
+                    previewsContainer: "#previews", // Define the container to display the previews
+                    clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
+                })
+
+                myDropzone.on("addedfile", function (file) {
+                    // Hookup the start button
+                    file.previewElement.querySelector(".start").onclick = function () { myDropzone.enqueueFile(file) }
+                })
+
+                // Update the total progress bar
+                myDropzone.on("totaluploadprogress", function (progress) {
+                    document.querySelector("#total-progress .progress-bar").style.width = progress + "%"
+                })
+
+                myDropzone.on("sending", function (file) {
+                    // Show the total progress bar when upload starts
+                    document.querySelector("#total-progress").style.opacity = "1"
+                    // And disable the start button
+                    file.previewElement.querySelector(".start").setAttribute("disabled", "disabled")
+                })
+
+                // Hide the total progress bar when nothing's uploading anymore
+                myDropzone.on("queuecomplete", function (progress) {
+                    document.querySelector("#total-progress").style.opacity = "0"
+                })
+
+                // Setup the buttons for all transfers
+                // The "add files" button doesn't need to be setup because the config
+                // `clickable` has already been specified.
+                document.querySelector("#actions .start").onclick = function () {
+                    myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED))
+                }
+                document.querySelector("#actions .cancel").onclick = function () {
+                    myDropzone.removeAllFiles(true)
+                }
+// DropzoneJS Demo Code End
+            </script>
+</body>
+
+</html>
