@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Vista De Plano Para Cartera</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+    <!-- fullCalendar -->
+    <link rel="stylesheet" href="../plugins/fullcalendar/main.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.css" rel="stylesheet" />
+    <link rel="stylesheet"
+        href="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/dist/mdb5/plugins/table-editor.min.css">
+    <link rel="stylesheet"
+        href="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/dist/mdb5/standard/modules/b4bca5d779777cff9d5c51553952a0a1.min.css">
+    <link rel="stylesheet" id="roboto-subset.css-css"
+        href="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/mdb5/fonts/roboto-subset.css?ver=3.9.0-update.5"
+        type="text/css" media="all">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="./../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="./../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="./../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-gradient-secondary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="Caja.html"><strong><i class="icon fa fa-eye"></i> Aplicativo
+                    Rivera</strong></a>
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="index.html"><b>Dashboard</b></a>
+                    </li>
+                    <!-- Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-mdb-toggle="dropdown" aria-expanded="false">
+                            <b>Cartera</b>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li class="nav-item">
+                                <a class="nav-link " href="CuadreCartera.html"><b>Cartera</b></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="TablaRelacional.html"><b>Tabla Relacional</b></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="VistaPlano.html"><b>Vista Plano</b></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Dropdown -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="Inventario.html"><b>Control Mecanicos Inventario</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Caja.html"><b>Ingreso</b></a>
+                    </li>
+                </ul>
+                <form class="d-flex input-group w-auto">
+                    <input type="search" class="form-control" placeholder="Buscar" aria-label="Search" />
+                    <button class="btn bg-gradient-orange" type="button" data-mdb-ripple-color="dark">
+                        <b>Buscar</b>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Right elements -->
+            <div class="d-flex align-items-center" style="margin: 5px;" id="ocultar">
+                <!-- Notifications -->
+                <div class="dropdown" style="margin: 5px;">
+                    <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
+                        role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge rounded-pill badge-notification bg-danger">1</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                        <li>
+                            <a class="dropdown-item" href="#">Ultimos cambios</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Nuevos registros</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Otros</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Avatar -->
+                <div class="dropdown" style="margin: 5px;">
+                    <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#"
+                        id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                        <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" height="25"
+                            alt="Black and White Portrait of a Man" loading="lazy" />
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                        <li>
+                            <a class="dropdown-item" href="#">Mi perfil</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Configuracion</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="Login.html">Cerrar sesion</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Right elements -->
+        </div>
+        </div>
+    </nav>
+
+
+    <div class="content">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Vista Plano Cartera</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="Caja.html">Regresar</a></li>
+                            <li class="breadcrumb-item active">Vista Plano Cartera</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <div class="row">
+            <div class="col-sm-3" style="margin: 10px;">
+                <button class="btn bg-gradient-orange"
+                    onclick="htmlExcel('example1', 'Reporte')"><b>Exportar</b></button>
+            </div>
+        </div>
+
+        <div class="toast show fade text-white bg-dark" style="margin: 8px;"  role="alert" aria-live="assertive" aria-atomic="true" data-mdb-color="info" data-mdb-autohide="false">
+            <div class="toast-header text-white bg-dark"">
+              <i class="fas fa-info-circle fa-lg me-2"></i>
+              <strong class="me-auto">Total Valor de Ventas:</strong>
+              <small>Hace 11 min</small>
+              <button type="button" class="btn-close btn-close-white" data-mdb-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">  <strong class="me-auto">1845812</strong></div>
+          </div>
+
+        <div class="card" style="margin: 8px;">
+            <div class="card-header bg-gradient-orange">
+                <h3 class="card-title"><b>Vista Plano Cartera</b></h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="bg-white border rounded-5">
+
+                <section class="p-4 bg-dark" id="" style="border-radius: .5rem .5rem .5rem .5rem; color: white;">
+                    <hr>
+                    <div class="table-editor bg-dark dark" id="table_dark" data-mdb-color=" bg-dark"
+                        data-mdb-mode="modal" data-mdb-dark="true" data-mdb-entries="5"
+                        data-mdb-entries-options="[5, 10, 15]">
+                        <div class="table-editor__inner table-responsive ps"
+                            style="overflow: auto; position: relative;">
+                            <table class="table bg-dark" id="example1">
+                                <thead>
+                                    <tr>
+                                        <th style="cursor: pointer;" scope="col"><i data-mdb-sort="field_0"
+                                                class="table-editor__sort-icon fas fa-arrow-up"></i> Id Sede
+                                        </th>
+                                        <th style="cursor: pointer;" scope="col"><i data-mdb-sort="field_1"
+                                                class="table-editor__sort-icon fas fa-arrow-up"></i> Identificacion
+                                            Cliente</th>
+                                        <th style="cursor: pointer;" scope="col"><i data-mdb-sort="field_2"
+                                                class="table-editor__sort-icon fas fa-arrow-up"></i> Nombre Cliente</th>
+                                        <th style="cursor: pointer;" scope="col"><i data-mdb-sort="field_1"
+                                                class="table-editor__sort-icon fas fa-arrow-up"></i> Articulo</th>
+                                        <th style="cursor: pointer;" scope="col"><i data-mdb-sort="field_1"
+                                                class="table-editor__sort-icon fas fa-arrow-up"></i> Valor Venta</th>
+                                        <th style="cursor: pointer;" scope="col"><i data-mdb-sort="field_1"
+                                                class="table-editor__sort-icon fas fa-arrow-up"></i> Cant Id Documentro
+                                        </th>
+                                        <th style="cursor: pointer;" scope="col"><i data-mdb-sort="field_1"
+                                                class="table-editor__sort-icon fas fa-arrow-up"></i> Acciones
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr scope="row" data-mdb-index="0">
+                                        <th style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_0">
+                                            1</th>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_1">
+                                            900361607</td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            Andres Parra sierra
+                                        </td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            DIESEL
+                                        </td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            13,184
+                                        </td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            8
+                                        </td>
+                                        <td><button class="me-2 btn btn-lg text-light edit-button"><i
+                                                    class="far fa-edit"></i></button><button
+                                                class="btn btn-lg text-light delete-button "><i
+                                                    class="far fa-trash-alt"></i></button></td>
+                                    </tr>
+                                    <tr scope="row" data-mdb-index="1">
+                                        <th style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_0">
+                                            1</td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_1">
+                                            908361608</th>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            Jesus antonio martinez
+                                        </td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            DIESEL
+                                        </td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            9,497
+                                        </td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            10
+                                        </td>
+                                        <td><button class="me-2 btn btn-lg text-light edit-button"><i
+                                                    class="far fa-edit"></i></button><button
+                                                class="btn btn-lg text-light delete-button "><i
+                                                    class="far fa-trash-alt"></i></button></td>
+                                    </tr>
+                                    <tr scope="row" data-mdb-index="2">
+                                        <th style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_0">
+                                            1</td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_1">
+                                            850361607</td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            Benito antonio martinez
+                                        </td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            GASOLINA CORRIENTE
+                                        </td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            13,184
+                                        </td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            8
+                                        </td>
+                                        <td><button class="me-2 btn btn-lg text-light edit-button"><i
+                                                    class="far fa-edit"></i></button><button
+                                                class="btn btn-lg text-light delete-button "><i
+                                                    class="far fa-trash-alt"></i></button></td>
+                                    </tr>
+                                    <tr scope="row" data-mdb-index="2">
+                                        <th style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_0">
+                                            1</td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_1">
+                                            902361607</td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            Crinstian parra sierra
+                                        </td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            DIESEL
+                                        </td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            13,184
+                                        </td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            8
+                                        </td>
+                                        <td><button class="me-2 btn btn-lg text-light edit-button"><i
+                                                    class="far fa-edit"></i></button><button
+                                                class="btn btn-lg text-light delete-button "><i
+                                                    class="far fa-trash-alt"></i></button></td>
+                                    </tr>
+                                    <tr scope="row" data-mdb-index="2">
+                                        <th style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_0">
+                                            1</td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_1">
+                                            705361607</td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            Juan Felipe Ramirez
+                                        </td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            GASOLINA CORRIENTE
+                                        </td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            13,184
+                                        </td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            8
+                                        </td>
+                                        <td><button class="me-2 btn btn-lg text-light edit-button"><i
+                                                    class="far fa-edit"></i></button><button
+                                                class="btn btn-lg text-light delete-button "><i
+                                                    class="far fa-trash-alt"></i></button></td>
+                                    </tr>
+                                    <tr scope="row" data-mdb-index="2">
+                                        <th style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_0">
+                                            3</th>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_1">
+                                            985361607</td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            Andres Jose Ramirez
+                                        </td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            DIESEL
+                                        </td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            13,184
+                                        </td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            8
+                                        </td>
+                                        <td><button class="me-2 btn btn-lg text-light edit-button"><i
+                                                    class="far fa-edit"></i></button><button
+                                                class="btn btn-lg text-light delete-button "><i
+                                                    class="far fa-trash-alt"></i></button></td>
+                                    </tr>
+                                    <tr scope="row" data-mdb-index="2">
+                                        <th style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_0">
+                                            3</th>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_1">
+                                            900381507</td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            Gustavo avila rodigrez
+                                        </td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            GASOLINA CORRIENTE
+                                        </td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            13,184
+                                        </td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            8
+                                        </td>
+                                        <td><button class="me-2 btn btn-lg text-light edit-button"><i
+                                                    class="far fa-edit"></i></button><button
+                                                class="btn btn-lg text-light delete-button "><i
+                                                    class="far fa-trash-alt"></i></button></td>
+                                    </tr>
+                                    <tr scope="row" data-mdb-index="2">
+                                        <th style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_0">
+                                            3</th>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_1">
+                                            810361607</td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            Liliana parra
+                                        </td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            GASOLINA CORRIENTE
+                                        </td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            13,184
+                                        </td>
+                                        <td style="min-width: 250px; max-width: 250px" class=""
+                                            data-mdb-field="field_2">
+                                            8
+                                        </td>
+                                        <td><button class="me-2 btn btn-lg text-light edit-button"><i
+                                                    class="far fa-edit"></i></button><button
+                                                class="btn btn-lg text-light delete-button "><i
+                                                    class="far fa-trash-alt"></i></button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                            </div>
+                            <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <!-- AdminLTE App -->
+    <script src="./../dist/js/adminlte.min.js"></script>
+    <!-- FLOT CHARTS -->
+    <script src="./../plugins/flot/jquery.flot.js"></script>
+    <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+    <script src="./../plugins/flot/plugins/jquery.flot.resize.js"></script>
+    <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+    <script src="./../plugins/flot/plugins/jquery.flot.pie.js"></script>
+    <script src="./../plugins/jquery/jquery.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../dist/js/demo.js"></script>
+    <script src="http://cnd.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="../dist/js/daterangepicker.js"></script>
+    <!-- Bootstrap Switch -->
+    <script src="../../plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+    <!-- InputMask -->
+    <script src="../../plugins/moment/moment.min.js"></script>
+    <script src="../../plugins/inputmask/jquery.inputmask.min.js"></script>
+    <!-- jQuery -->
+    <script src="./../plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="./../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="./../dist/js/adminlte.min.js"></script>
+    <!-- FLOT CHARTS -->
+    <script src="./../plugins/flot/jquery.flot.js"></script>
+    <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+    <script src="./../plugins/flot/plugins/jquery.flot.resize.js"></script>
+    <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+    <script src="./../plugins/flot/plugins/jquery.flot.pie.js"></script>
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <!-- Select2 -->
+    <script src="../../plugins/select2/js/select2.full.min.js"></script>
+    <!-- Bootstrap4 Duallistbox -->
+    <script src="./../plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+    <!-- InputMask -->
+    <script src="./../plugins/moment/moment.min.js"></script>
+    <script src="./../plugins/inputmask/jquery.inputmask.min.js"></script>
+    <!-- date-range-picker -->
+    <script src="./../plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap color picker -->
+    <script src="./../plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="./../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Bootstrap Switch -->
+    <script src="./../plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+    <!-- BS-Stepper -->
+    <script src="./../plugins/bs-stepper/js/bs-stepper.min.js"></script>
+    <!-- dropzonejs -->
+    <script src="./../plugins/dropzone/min/dropzone.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="./../dist/js/demo.js"></script>
+    <script src="http://cnd.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="./../dist/js/daterangepicker.js"></script>
+    <!-- jQuery -->
+    <script src="./../plugins/jquery/jquery.min.js"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="./../plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="./../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="./../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="./../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="./../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="./../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="./../plugins/jszip/jszip.min.js"></script>
+    <script src="./../plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="./../plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="./../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="./../plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="./../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script src="https://unpkg.com/xlsx@latest/dist/xlsx.full.min.js"></script>
+    <script src="https://unpkg.com/file-saverjs@latest/FileSaver.min.js"></script>
+    <script src="https://unpkg.com/tableexport@latest/dist/js/tableexport.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="./../dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="./../dist/js/demo.js"></script>
+    <!-- Page specific script -->
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false, 'paging': false,
+            })
+        });
+    </script>
+    <script>
+        function htmlExcel(idTabla, nombreArchivo = '') {
+            let linkDescarga;
+            let tipoDatos = 'application/vnd.ms-excel';
+            let tablaDatos = document.getElementById(idTabla);
+            let tablaHTML = tablaDatos.outerHTML.replace(/ /g, '%20');
+
+            // Nombre del archivo
+            nombreArchivo = nombreArchivo ? nombreArchivo + '.xlsx' : 'Reporte.xlsx';
+
+            // Crear el link de descarga
+            linkDescarga = document.createElement("a");
+
+            document.body.appendChild(linkDescarga);
+
+            if (navigator.msSaveOrOpenBlob) {
+                let blob = new Blob(['\ufeff', tablaHTML], {
+                    type: tipoDatos
+                });
+                navigator.msSaveOrOpenBlob(blob, nombreArchivo);
+            } else {
+                // Crear el link al archivo
+                linkDescarga.href = 'data:' + tipoDatos + ', ' + tablaHTML;
+
+                // Setear el nombre de archivo
+                linkDescarga.download = nombreArchivo;
+
+                //Ejecutar la función
+                linkDescarga.click();
+            }
+        }
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.js"></script>
+</body>
+
+</html>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <title>Caja</title>
+    <title>Ingreso</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -17,50 +17,177 @@
     <link rel="stylesheet" href="../plugins/fullcalendar/main.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
-    <title>Title</title>
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.css" rel="stylesheet" />
+    <link rel="stylesheet"
+        href="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/dist/mdb5/plugins/table-editor.min.css">
+    <link rel="stylesheet"
+        href="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/dist/mdb5/standard/modules/b4bca5d779777cff9d5c51553952a0a1.min.css">
+    <link rel="stylesheet" id="roboto-subset.css-css"
+        href="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/mdb5/fonts/roboto-subset.css?ver=3.9.0-update.5"
+        type="text/css" media="all">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="./../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="./../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="./../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <style>
+        .modalDialog2 {
+            position: fixed;
+            font-family: Arial, Helvetica, sans-serif;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 99999;
+            opacity: 0;
+            -webkit-transition: opacity 400ms ease-in;
+            -moz-transition: opacity 400ms ease-in;
+            transition: opacity 400ms ease-in;
+            pointer-events: none;
+            overflow-y: initial !important
+        }
+
+        .modalDialog2:target {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modalDialog2>div {
+            height: 75%;
+            overflow: auto;
+            width: 95%;
+            margin: 10px;
+            border-radius: 10px;
+            background: #fff;
+            background: -moz-linear-gradient(#fff, #999);
+            background: -webkit-linear-gradient(#fff, #999);
+            background: -o-linear-gradient(#fff, #999);
+            -webkit-transition: opacity 400ms ease-in;
+            -moz-transition: opacity 400ms ease-in;
+            transition: opacity 400ms ease-in;
+        }
+
+        .close {
+            background: #606061;
+            color: #FFFFFF;
+            line-height: 25px;
+            position: absolute;
+            right: -12px;
+            text-align: center;
+            top: -10px;
+            width: 24px;
+            text-decoration: none;
+            font-weight: bold;
+            -webkit-border-radius: 12px;
+            -moz-border-radius: 12px;
+            border-radius: 12px;
+            -moz-box-shadow: 1px 1px 3px #000;
+            -webkit-box-shadow: 1px 1px 3px #000;
+            box-shadow: 1px 1px 3px #000;
+        }
+
+        .close:hover {
+            background: #00d9ff;
+        }
+    </style>
 </head>
 
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-gradient-secondary">
         <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
-                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <a class="navbar-brand" href="Caja.html"><strong><i class="icon fa fa-eye"></i> Aplicativo
+                    Rivera</strong></a>
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
             </button>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <a class="navbar-brand" href="Caja.html"><strong><i class="icon fa fa-eye"></i> Aplicativo
-                        Rivera</strong></a>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link " aria-current="page" href="index.html"><b>Dashboard</b></a>
                     </li>
+                    <!-- Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-mdb-toggle="dropdown" aria-expanded="false">
+                            <b>Cartera</b>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li class="nav-item">
+                                <a class="nav-link " href="CuadreCartera.html"><b>Cartera</b></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="TablaRelacional.html"><b>Tabla Relacional</b></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="VistaPlano.html"><b>Vista Plano</b></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Dropdown -->
                     <li class="nav-item">
-                        <a class="nav-link" href="Inventario.html"><b>Inventario</b></a>
+                        <a class="nav-link" href="Inventario.html"><b>Control Mecanicos Inventario</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="Caja.html"><b>Caja</b></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="TablaRelacional.html"><b>Tabla Relacional</b></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="CuadreCartera.html"><b>Cartera</b></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="404.html"><b>404</b></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="500.html"><b>500</b></a>
+                        <a class="nav-link active" href="Caja.html"><b>Ingreso</b></a>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                    <button class="btn bg-gradient-orange" type="submit"><b>Buscar</b></button>
+                <form class="d-flex input-group w-auto">
+                    <input type="search" class="form-control" placeholder="Buscar" aria-label="Search" />
+                    <button class="btn bg-gradient-orange" type="button" data-mdb-ripple-color="dark">
+                        <b>Buscar</b>
+                    </button>
                 </form>
             </div>
+
+            <!-- Right elements -->
+            <div class="d-flex align-items-center" style="margin: 5px;" id="ocultar">
+                <!-- Notifications -->
+                <div class="dropdown" style="margin: 5px;">
+                    <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
+                        role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge rounded-pill badge-notification bg-danger">1</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                        <li>
+                            <a class="dropdown-item" href="#">Ultimos cambios</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Nuevos registros</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Otros</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Avatar -->
+                <div class="dropdown" style="margin: 5px;">
+                    <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#"
+                        id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                        <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" height="25"
+                            alt="Black and White Portrait of a Man" loading="lazy" />
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                        <li>
+                            <a class="dropdown-item" href="#">Mi perfil</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Configuracion</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="Login.html">Cerrar sesion</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Right elements -->
+        </div>
         </div>
     </nav>
 
@@ -70,11 +197,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Cuadre De Caja</h1>
+                        <h1>Ingreso</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item active">Cuadre De Caja</li>
+                            <li class="breadcrumb-item active">Ingreso</li>
                         </ol>
                     </div>
                 </div>
@@ -87,22 +214,29 @@
                     <h3 class="card-title"><b>CAJAS DE INGRESO</b></h3>
                 </div>
                 <!-- ./card-header -->
-                <div class="card-body">
-                    <table
-                        class="table table-secondary table-striped table-hover table-bordered table-sm table-responsive-sm">
+                <div class="card-body bg-dark">
+                    <table id='example1'
+                        class="table table-dark table-striped table-hover table-bordered table-sm table-responsive-sm">
                         <thead>
                             <tr>
                             <tr>
                                 <th>Sede</th>
-                                <th>ID TURNO</th>
+                                <th>ID Turno</th>
                                 <th>IdTurno</th>
-                                <th>TURNO</th>
-                                <th>ISLA</th>
-                                <th>VENDEDOR</th>
-                                <th>GASOLINA CORRIENTE (GLN)</th>
-                                <th>GASOLINA CORRIENTE (COP)</th>
-                                <th>DIESEL(GLN)</th>
-                                <th>DIESEL(COP)</th>
+                                <th>Turno</th>
+                                <th>Isla</th>
+                                <th>Vendedor</th>
+                                <th>Total Volumen Sistema</th>
+                                <th>Valor Combustible</th>
+                                <th>Canastilla</th>
+                                <th>Vental Total</th>
+                                <th>Credito</th>
+                                <th>Medios electrónicos</th>
+                                <th>Calibración</th>
+                                <th>Efectivo</th>
+                                <th>Recaudo</th>
+                                <th>S/F</th>
+                                <th></th>
                             </tr>
                             </tr>
                         </thead>
@@ -114,360 +248,640 @@
                                 <td>Mar 1 2022 5:58AM - Mar 1 2022 1:43PM</td>
                                 <td>2</td>
                                 <td>CAMPO APOSTA WILLIAM HERNAN</td>
-                                <td>564,194</td>
-                                <td>5336479</td>
-                                <td>531,271</td>
-                                <td>4967333</td>
+                                <td>1123,507</td>
+                                <td>1059,61</td>
+                                <td>10167992</td>
+                                <td>313600</td>
+                                <td>10481592</td>
+                                <td>3962067</td>
+                                <td>990657</td>
+                                <td>5528900</td>
+                                <td>10481624</td>
+                                <td>32</td>
+                                <td class="project-actions text-right">
+                                    <a class="btn bg-gradient-orange btn-sm" href="#MasInfo1">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
-                                <td></td>
+                                <td>1-EDS CARRERA 10</td>
                                 <td>288</td>
                                 <td>1879</td>
                                 <td>Mar 1 2022 5:58AM - Mar 1 2022 1:43PM</td>
                                 <td>2</td>
                                 <td>CAMPO APOSTA WILLIAM HERNAN</td>
-                                <td>564,194</td>
-                                <td>5336479</td>
-                                <td>531,271</td>
-                                <td>4967333</td>
+                                <td>1123,507</td>
+                                <td>1059,61</td>
+                                <td>10167992</td>
+                                <td>313600</td>
+                                <td>10481592</td>
+                                <td>3962067</td>
+                                <td>990657</td>
+                                <td>5528900</td>
+                                <td>10481624</td>
+                                <td>32</td>
+                                <td class="project-actions text-right">
+                                    <a class="btn bg-gradient-orange btn-sm" href="#MasInfo2">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>2- EDS DORADO</td>
                                 <td>26238</td>
                                 <td>3283</td>
-                                <td>Mar  1 2022  1:30PM - Mar  1 2022  9:40PM</td>
+                                <td>Mar 1 2022 1:30PM - Mar 1 2022 9:40PM</td>
                                 <td>2</td>
                                 <td>PATTERSON CASTILLO JAIR</td>
-                                <td>547,33</td>
-                                <td>5176638</td>
-                                <td>166,923</td>
-                                <td>1551711</td>
+                                <td>714,261</td>
+                                <td>714,32</td>
+                                <td>6728349</td>
+                                <td>97000</td>
+                                <td>6825349</td>
+                                <td>981525</td>
+                                <td>1761482</td>
+                                <td>4082350</td>
+                                <td>6825357</td>
+                                <td>8</td>
+                                <td class="project-actions text-right">
+                                    <a class="btn bg-gradient-orange btn-sm" href="#MasInfo3">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
-                                <td></td>
+                                <td>2- EDS DORADO</td>
                                 <td>26238</td>
                                 <td>3283</td>
-                                <td>Mar  1 2022  1:30PM - Mar  1 2022  9:40PM</td>
+                                <td>Mar 1 2022 1:30PM - Mar 1 2022 9:40PM</td>
                                 <td>2</td>
                                 <td>PATTERSON CASTILLO JAIR</td>
-                                <td>547,33</td>
-                                <td>5176638</td>
-                                <td>166,923</td>
-                                <td>1551711</td>
+                                <td>714,261</td>
+                                <td>714,32</td>
+                                <td>6728349</td>
+                                <td>97000</td>
+                                <td>6825349</td>
+                                <td>981525</td>
+                                <td>1761482</td>
+                                <td>4082350</td>
+                                <td>6825357</td>
+                                <td>8</td>
+                                <td class="project-actions text-right">
+                                    <a class="btn bg-gradient-orange btn-sm" href="#MasInfo4">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>3-EDS SAN MARINO</td>
                                 <td>26639</td>
                                 <td>952</td>
-                                <td>Mar  1 2022  6:05AM - Mar  1 2022  1:55PM</td>
+                                <td>Mar 1 2022 6:05AM - Mar 1 2022 1:55PM</td>
                                 <td>3</td>
                                 <td>ANDRADE HENRY</td>
-                                <td>503,608</td>
-                                <td>4759951</td>
-                                <td>211,043</td>
-                                <td>1959765</td>
+                                <td>737,235</td>
+                                <td>736,77</td>
+                                <td>7092061</td>
+                                <td>104400</td>
+                                <td>7196461</td>
+                                <td>1965220</td>
+                                <td>795876</td>
+                                <td>4435400</td>
+                                <td>7196496</td>
+                                <td>35</td>
+                                <td class="project-actions text-right">
+                                    <a class="btn bg-gradient-orange btn-sm" href="#MasInfo5">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
-                                <td></td>
+                                <td>3-EDS SAN MARINO</td>
                                 <td>26639</td>
                                 <td>952</td>
-                                <td>Mar  1 2022  6:05AM - Mar  1 2022  1:55PM</td>
+                                <td>Mar 1 2022 6:05AM - Mar 1 2022 1:55PM</td>
                                 <td>3</td>
                                 <td>ANDRADE HENRY</td>
-                                <td>503,608</td>
-                                <td>4759951</td>
-                                <td>211,043</td>
-                                <td>1959765</td>
+                                <td>737,235</td>
+                                <td>736,77</td>
+                                <td>7092061</td>
+                                <td>104400</td>
+                                <td>7196461</td>
+                                <td>1965220</td>
+                                <td>795876</td>
+                                <td>4435400</td>
+                                <td>7196496</td>
+                                <td>35</td>
+                                <td class="project-actions text-right">
+                                    <a class="btn bg-gradient-orange btn-sm" href="#MasInfo6">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>4-EDS GREEN GAS </td>
                                 <td>9782</td>
                                 <td></td>
-                                <td>Mar  1 2022  6:00AM - Mar  1 2022  6:00PM</td>
+                                <td>Mar 1 2022 6:00AM - Mar 1 2022 6:00PM</td>
                                 <td>1</td>
                                 <td>MARITZA LOMBANA</td>
                                 <td></td>
                                 <td></td>
+                                <td>3209220</td>
+                                <td>66200</td>
+                                <td>3275420</td>
                                 <td></td>
-                                <td></td>
+                                <td>111614</td>
+                                <td>3164000</td>
+                                <td>3275614</td>
+                                <td>194</td>
+                                <td class="project-actions text-right">
+                                    <a class="btn bg-gradient-orange btn-sm" href="#MasInfo7">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
-                                <td></td>
+                                <td>4-EDS GREEN GAS</td>
                                 <td>9782</td>
                                 <td></td>
-                                <td>Mar  1 2022  6:00AM - Mar  1 2022  6:00PM</td>
+                                <td>Mar 1 2022 6:00AM - Mar 1 2022 6:00PM</td>
                                 <td>1</td>
                                 <td>MARITZA LOMBANA</td>
                                 <td></td>
                                 <td></td>
+                                <td>3209220</td>
+                                <td>66200</td>
+                                <td>3275420</td>
                                 <td></td>
-                                <td></td>
+                                <td>111614</td>
+                                <td>3164000</td>
+                                <td>3275614</td>
+                                <td>194</td>
+                                <td class="project-actions text-right">
+                                    <a class="btn bg-gradient-orange btn-sm" href="#MasInfo8">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                    </a>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <!-- /.card-body -->
 
-                <div id="Mantenimietnos" class="content">
+                <div id="MasInfo1" class="modalDialog2">
                     <div class="card" style="margin: 15px;">
-                        <div class="card-header bg-orange">
+                        <section class="content-header">
+                            <div class="container-fluid">
+                                <div class="row mb-2">
+                                    <div class="col-sm-6">
+                                        <ol class="breadcrumb float-sm-right bg-transparent">
+                                            <li class="breadcrumb-item"><a href="#">Cerrar</a></li>
+                                            <li class="breadcrumb-item active">Mas Informacion</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="card-header bg-gradient-orange">
                         </div>
                         <!-- ./card-header -->
-                        <div class="card-body">
-                            <table
-                                class="table table-secondary table-striped table-hover table-bordered table-sm table-responsive-sm">
-                                <thead>
-                                    <tr>
-                                    <tr>
-                                        <th>Sede</th>
-                                        <th>GASOLINA EXTRA</th>
-                                        <th>GASOLINA EXTRA</th>
-                                        <th>MAX PRO</th>
-                                        <th>MAX PRO</th>
-                                        <th>GNVC</th>
-                                        <th>GNVC</th>
-                                        <th>Total volumen Sistema</th>
-                                        <th>Total volumen Mecanico</th>
-                                        <th>DIF</th>
-                                        <th></th>
-                                    </tr>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1-EDS CARRERA 10</td>
-                                        <td>28,042</td>
-                                        <td>462300</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>1123,507</td>
-                                        <td>1059,61</td>
-                                        <td>63,897</td>
-                                        <td>10766112</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>28,042</td>
-                                        <td>462300</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>1123,507</td>
-                                        <td>1059,61</td>
-                                        <td>63,897</td>
-                                        <td>10766112</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2- EDS DORADO</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>714,261</td>
-                                        <td>714,32</td>
-                                        <td>-0.06</td>
-                                        <td>6728349</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>714,261</td>
-                                        <td>714,32</td>
-                                        <td>-0.06</td>
-                                        <td>6728349</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3-EDS SAN MARINO</td>
-                                        <td>22,584</td>
-                                        <td>372345</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>737,235</td>
-                                        <td>736,77</td>
-                                        <td>0,464</td>
-                                        <td>7092061</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>22,584</td>
-                                        <td>372345</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>737,235</td>
-                                        <td>736,77</td>
-                                        <td>0,464</td>
-                                        <td>7092061</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4-EDS GREEN GAS</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>1698</td>
-                                        <td>3209220</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>1698</td>
-                                        <td>3209220</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="card-body bg-dark">
+                            <table id="example2"
+                            class="table table-dark table-striped table-hover table-bordered table-sm table-responsive-sm">
+                            <thead>
+                                <tr>
+                                <tr>
+                                    <th>GASOLINA EXTRA</th>
+                                    <th>GASOLINA EXTRA</th>
+                                    <th>MAX PRO</th>
+                                    <th>MAX PRO</th>
+                                    <th>GNVC</th>
+                                    <th>GNVC</th>
+                                    <th>DIF</th>
+                                    <th></th>
+                                    <th>Total Volumen Sistema</th>
+                                </tr>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>28,042</td>
+                                    <td>462300</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>63,897</td>
+                                    <td>10766112</td>
+                                    <td>1123,507</td>
+                                </tr>
+                            </tbody>
+                        </table>
                         </div>
                         <!-- /.card-body -->
+                    </div>
+                </div>
 
-                        <div id="Mantenimietnos" class="content">
-                            <div class="card" style="margin: 15px;">
-                                <div class="card-header bg-orange">
+                
+                <div id="MasInfo2" class="modalDialog2">
+                    <div class="card" style="margin: 15px;">
+                        <section class="content-header">
+                            <div class="container-fluid">
+                                <div class="row mb-2">
+                                    <div class="col-sm-6">
+                                        <ol class="breadcrumb float-sm-right bg-transparent">
+                                            <li class="breadcrumb-item"><a href="#">Cerrar</a></li>
+                                            <li class="breadcrumb-item active">Mas Informacion</li>
+                                        </ol>
+                                    </div>
                                 </div>
-                                <!-- ./card-header -->
-                                <div class="card-body">
-                                    <table
-                                        class="table table-secondary table-striped table-hover table-bordered table-sm table-responsive-sm">
-                                        <thead>
-                                            <tr>
-                                            <tr>
-                                                <th>Sede</th>
-                                                <th>VALOR COMBUSTIBLES</th>
-                                                <th>CANASTILLA</th>
-                                                <th>VENTA TOTAL</th>
-                                                <th>CRÉDITO</th>
-                                                <th>MEDIOS ELECTRONICOS </th>
-                                                <th>CALIBRACIÓN</th>
-                                                <th>EFECTIVO</th>
-                                                <th>RECAUDO</th>
-                                                <th>S/F</th>
-                                            </tr>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1-EDS CARRERA 10</td>
-                                                <td>10167992</td>
-                                                <td>313600</td>
-                                                <td>10481592</td>
-                                                <td>3962067</td>
-                                                <td>990657</td>
-                                                <td></td>
-                                                <td>5528900</td>
-                                                <td>10481624</td>
-                                                <td>32</td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td>10167992</td>
-                                                <td>313600</td>
-                                                <td>10481592</td>
-                                                <td>3962067</td>
-                                                <td>990657</td>
-                                                <td></td>
-                                                <td>5528900</td>
-                                                <td>10481624</td>
-                                                <td>32</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2- EDS DORADO</td>
-                                                <td>6728349</td>
-                                                <td>97000</td>
-                                                <td>6825349</td>
-                                                <td>981525</td>
-                                                <td>1761482</td>
-                                                <td></td>
-                                                <td>4082350</td>
-                                                <td>6825357</td>
-                                                <td>8</td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td>6728349</td>
-                                                <td>97000</td>
-                                                <td>6825349</td>
-                                                <td>981525</td>
-                                                <td>1761482</td>
-                                                <td></td>
-                                                <td>4082350</td>
-                                                <td>6825357</td>
-                                                <td>8</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3-EDS SAN MARINO</td>
-                                                <td>7092061</td>
-                                                <td>104400</td>
-                                                <td>7196461</td>
-                                                <td>1965220</td>
-                                                <td>795876</td>
-                                                <td></td>
-                                                <td>4435400</td>
-                                                <td>7196496</td>
-                                                <td>35</td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td>7092061</td>
-                                                <td>104400</td>
-                                                <td>7196461</td>
-                                                <td>1965220</td>
-                                                <td>795876</td>
-                                                <td></td>
-                                                <td>4435400</td>
-                                                <td>7196496</td>
-                                                <td>35</td>
-                                            </tr>
-                                            <tr>
-                                                <td>4-EDS GREEN GAS</td>
-                                                <td>3209220</td>
-                                                <td>66200</td>
-                                                <td>3275420</td>
-                                                <td></td>
-                                                <td>111614</td>
-                                                <td></td>
-                                                <td>3164000</td>
-                                                <td>3275614</td>
-                                                <td>194</td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td>3209220</td>
-                                                <td>66200</td>
-                                                <td>3275420</td>
-                                                <td></td>
-                                                <td>111614</td>
-                                                <td></td>
-                                                <td>3164000</td>
-                                                <td>3275614</td>
-                                                <td>194</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                            </div>
+                        </section>
+                        <div class="card-header bg-gradient-orange">
+                        </div>
+                        <!-- ./card-header -->
+                        <div class="card-body bg-dark">
+                            <table id="example2"
+                            class="table table-dark table-striped table-hover table-bordered table-sm table-responsive-sm">
+                            <thead>
+                                <tr>
+                                <tr>
+                                    <th>GASOLINA EXTRA</th>
+                                    <th>GASOLINA EXTRA</th>
+                                    <th>MAX PRO</th>
+                                    <th>MAX PRO</th>
+                                    <th>GNVC</th>
+                                    <th>GNVC</th>
+                                    <th>DIF</th>
+                                    <th></th>
+                                    <th>Total Volumen Sistema</th>
+                                </tr>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>28,042</td>
+                                    <td>462300</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>63,897</td>
+                                    <td>10766112</td>
+                                    <td>1123,507</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+
+                
+                <div id="MasInfo3" class="modalDialog2">
+                    <div class="card" style="margin: 15px;">
+                        <section class="content-header">
+                            <div class="container-fluid">
+                                <div class="row mb-2">
+                                    <div class="col-sm-6">
+                                        <ol class="breadcrumb float-sm-right bg-transparent">
+                                            <li class="breadcrumb-item"><a href="#">Cerrar</a></li>
+                                            <li class="breadcrumb-item active">Mas Informacion</li>
+                                        </ol>
+                                    </div>
                                 </div>
-                                <!-- /.card-body -->
+                            </div>
+                        </section>
+                        <div class="card-header bg-gradient-orange">
+                        </div>
+                        <!-- ./card-header -->
+                        <div class="card-body bg-dark">
+                            <table id="example2"
+                            class="table table-dark table-striped table-hover table-bordered table-sm table-responsive-sm">
+                            <thead>
+                                <tr>
+                                <tr>
+                                    <th>GASOLINA EXTRA</th>
+                                    <th>GASOLINA EXTRA</th>
+                                    <th>MAX PRO</th>
+                                    <th>MAX PRO</th>
+                                    <th>GNVC</th>
+                                    <th>GNVC</th>
+                                    <th>DIF</th>
+                                    <th></th>
+                                    <th>Total Volumen Sistema</th>
+                                </tr>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>-0.06</td>
+                                    <td>6728349</td>
+                                    <td>714,261</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+
+                
+                <div id="MasInfo4" class="modalDialog2">
+                    <div class="card" style="margin: 15px;">
+                        <section class="content-header">
+                            <div class="container-fluid">
+                                <div class="row mb-2">
+                                    <div class="col-sm-6">
+                                        <ol class="breadcrumb float-sm-right bg-transparent">
+                                            <li class="breadcrumb-item"><a href="#">Cerrar</a></li>
+                                            <li class="breadcrumb-item active">Mas Informacion</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="card-header bg-gradient-orange">
+                        </div>
+                        <!-- ./card-header -->
+                        <div class="card-body bg-dark">
+                            <table id="example2"
+                            class="table table-dark table-striped table-hover table-bordered table-sm table-responsive-sm">
+                            <thead>
+                                <tr>
+                                <tr>
+                                    <th>GASOLINA EXTRA</th>
+                                    <th>GASOLINA EXTRA</th>
+                                    <th>MAX PRO</th>
+                                    <th>MAX PRO</th>
+                                    <th>GNVC</th>
+                                    <th>GNVC</th>
+                                    <th>DIF</th>
+                                    <th></th>
+                                    <th>Total Volumen Sistema</th>
+                                </tr>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>-0.06</td>
+                                    <td>6728349</td>
+                                    <td>714,261</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+
+                
+                <div id="MasInfo5" class="modalDialog2">
+                    <div class="card" style="margin: 15px;">
+                        <section class="content-header">
+                            <div class="container-fluid">
+                                <div class="row mb-2">
+                                    <div class="col-sm-6">
+                                        <ol class="breadcrumb float-sm-right bg-transparent">
+                                            <li class="breadcrumb-item"><a href="#">Cerrar</a></li>
+                                            <li class="breadcrumb-item active">Mas Informacion</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="card-header bg-gradient-orange">
+                        </div>
+                        <!-- ./card-header -->
+                        <div class="card-body bg-dark">
+                            <table id="example2"
+                            class="table table-dark table-striped table-hover table-bordered table-sm table-responsive-sm">
+                            <thead>
+                                <tr>
+                                <tr>
+                                    <th>GASOLINA EXTRA</th>
+                                    <th>GASOLINA EXTRA</th>
+                                    <th>MAX PRO</th>
+                                    <th>MAX PRO</th>
+                                    <th>GNVC</th>
+                                    <th>GNVC</th>
+                                    <th>DIF</th>
+                                    <th></th>
+                                    <th>Total Volumen Sistema</th>
+                                </tr>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>22,584</td>
+                                    <td>372345</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>0,464</td>
+                                    <td>7092061</td>
+                                    <td>737,235</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+
+                
+                <div id="MasInfo6" class="modalDialog2">
+                    <div class="card" style="margin: 15px;">
+                        <section class="content-header">
+                            <div class="container-fluid">
+                                <div class="row mb-2">
+                                    <div class="col-sm-6">
+                                        <ol class="breadcrumb float-sm-right bg-transparent">
+                                            <li class="breadcrumb-item"><a href="#">Cerrar</a></li>
+                                            <li class="breadcrumb-item active">Mas Informacion</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="card-header bg-gradient-orange">
+                        </div>
+                        <!-- ./card-header -->
+                        <div class="card-body bg-dark">
+                            <table id="example2"
+                            class="table table-dark table-striped table-hover table-bordered table-sm table-responsive-sm">
+                            <thead>
+                                <tr>
+                                <tr>
+                                    <th>GASOLINA EXTRA</th>
+                                    <th>GASOLINA EXTRA</th>
+                                    <th>MAX PRO</th>
+                                    <th>MAX PRO</th>
+                                    <th>GNVC</th>
+                                    <th>GNVC</th>
+                                    <th>DIF</th>
+                                    <th></th>
+                                    <th>Total Volumen Sistema</th>
+                                </tr>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>22,584</td>
+                                    <td>372345</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>0,464</td>
+                                    <td>7092061</td>
+                                    <td>737,235</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+
+                
+                <div id="MasInfo7" class="modalDialog2">
+                    <div class="card" style="margin: 15px;">
+                        <section class="content-header">
+                            <div class="container-fluid">
+                                <div class="row mb-2">
+                                    <div class="col-sm-6">
+                                        <ol class="breadcrumb float-sm-right bg-transparent">
+                                            <li class="breadcrumb-item"><a href="#">Cerrar</a></li>
+                                            <li class="breadcrumb-item active">Mas Informacion</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="card-header bg-gradient-orange">
+                        </div>
+                        <!-- ./card-header -->
+                        <div class="card-body bg-dark">
+                            <table id="example2"
+                            class="table table-dark table-striped table-hover table-bordered table-sm table-responsive-sm">
+                            <thead>
+                                <tr>
+                                <tr>
+                                    <th>GASOLINA EXTRA</th>
+                                    <th>GASOLINA EXTRA</th>
+                                    <th>MAX PRO</th>
+                                    <th>MAX PRO</th>
+                                    <th>GNVC</th>
+                                    <th>GNVC</th>
+                                    <th>DIF</th>
+                                    <th></th>
+                                    <th>Total Volumen Sistema</th>
+                                </tr>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>1698</td>
+                                    <td>3209220</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+
+                
+                <div id="MasInfo8" class="modalDialog2">
+                    <div class="card" style="margin: 15px;">
+                        <section class="content-header">
+                            <div class="container-fluid">
+                                <div class="row mb-2">
+                                    <div class="col-sm-6">
+                                        <ol class="breadcrumb float-sm-right bg-transparent">
+                                            <li class="breadcrumb-item"><a href="#">Cerrar</a></li>
+                                            <li class="breadcrumb-item active">Mas Informacion</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="card-header bg-gradient-orange">
+                        </div>
+                        <!-- ./card-header -->
+                        <div class="card-body bg-dark">
+                            <table id="example2"
+                            class="table table-dark table-striped table-hover table-bordered table-sm table-responsive-sm">
+                            <thead>
+                                <tr>
+                                <tr>
+                                    <th>GASOLINA EXTRA</th>
+                                    <th>GASOLINA EXTRA</th>
+                                    <th>MAX PRO</th>
+                                    <th>MAX PRO</th>
+                                    <th>GNVC</th>
+                                    <th>GNVC</th>
+                                    <th>DIF</th>
+                                    <th></th>
+                                    <th>Total Volumen Sistema</th>
+                                </tr>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>1698</td>
+                                    <td>3209220</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+
 
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
@@ -501,8 +915,6 @@
         <script src="../../plugins/inputmask/jquery.inputmask.min.js"></script>
         <!-- jQuery -->
         <script src="./../plugins/jquery/jquery.min.js"></script>
-        <!-- Bootstrap 4 -->
-        <script src="./../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- AdminLTE App -->
         <script src="./../dist/js/adminlte.min.js"></script>
         <!-- FLOT CHARTS -->
@@ -537,155 +949,27 @@
         <script src="../dist/js/demo.js"></script>
         <script src="http://cnd.jsdelivr.net/momentjs/latest/moment.min.js"></script>
         <script src="../dist/js/daterangepicker.js"></script>
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.js"></script>
+        <!-- DataTables  & Plugins -->
+        <script src="./../plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="./../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+        <script src="./../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="./../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+        <script src="./../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+        <script src="./../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+        <script src="./../plugins/jszip/jszip.min.js"></script>
+        <script src="./../plugins/pdfmake/pdfmake.min.js"></script>
+        <script src="./../plugins/pdfmake/vfs_fonts.js"></script>
+        <script src="./../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+        <script src="./../plugins/datatables-buttons/js/buttons.print.min.js"></script>
+        <script src="./../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
         <script>
             $(function () {
-                //Initialize Select2 Elements
-                $('.select2').select2()
-
-                //Initialize Select2 Elements
-                $('.select2bs4').select2({
-                    theme: 'bootstrap4'
+                $("#example1").DataTable({
+                    "responsive": true, "lengthChange": false, "autoWidth": false,  'paging': false,
                 })
-
-                //Datemask dd/mm/yyyy
-                $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
-                //Datemask2 mm/dd/yyyy
-                $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
-                //Money Euro
-                $('[data-mask]').inputmask()
-
-                //Date picker
-                $('#reservationdate').datetimepicker({
-                    format: 'L'
-                });
-
-                //Date and time picker
-                $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
-
-                //Date range picker
-                $('#reservation').daterangepicker()
-                //Date range picker with time picker
-                $('#reservationtime').daterangepicker({
-                    timePicker: true,
-                    timePickerIncrement: 30,
-                    locale: {
-                        format: 'MM/DD/YYYY hh:mm A'
-                    }
-                })
-
-
-                //Timepicker
-                $('#timepicker').datetimepicker({
-                    format: 'LT'
-                })
-
-                //Datemask dd/mm/yyyy
-                $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
-                //Datemask2 mm/dd/yyyy
-                $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
-                //Money Euro
-                $('[data-mask]').inputmask()
-
-                //Date picker
-                $('#reservationdate').datetimepicker({
-                    format: 'L'
-                });
-
-                //Date and time picker
-                $('#reservationdatetime1').datetimepicker({ icons: { time: 'far fa-clock' } });
-
-                //Date range picker
-                $('#reservation').daterangepicker()
-                //Date range picker with time picker
-                $('#reservationtime').daterangepicker({
-                    timePicker: true,
-                    timePickerIncrement: 30,
-                    locale: {
-                        format: 'MM/DD/YYYY hh:mm A'
-                    }
-                })
-
-
-                //Timepicker
-                $('#timepicker').datetimepicker({
-                    format: 'LT'
-                })
-
-
-                //Bootstrap Duallistbox
-                $('.duallistbox').bootstrapDualListbox()
-
-                //Colorpicker
-                $('.my-colorpicker1').colorpicker()
-                //color picker with addon
-                $('.my-colorpicker2').colorpicker()
-
-                $('.my-colorpicker2').on('colorpickerChange', function (event) {
-                    $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
-                })
-
-                $("input[data-bootstrap-switch]").each(function () {
-                    $(this).bootstrapSwitch('state', $(this).prop('checked'));
-                })
-
-            })
-            // BS-Stepper Init
-            document.addEventListener('DOMContentLoaded', function () {
-                window.stepper = new Stepper(document.querySelector('.bs-stepper'))
-            })
-
-            // DropzoneJS Demo Code Start
-            Dropzone.autoDiscover = false
-
-            // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
-            var previewNode = document.querySelector("#template")
-            previewNode.id = ""
-            var previewTemplate = previewNode.parentNode.innerHTML
-            previewNode.parentNode.removeChild(previewNode)
-
-            var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
-                url: "/target-url", // Set the url
-                thumbnailWidth: 80,
-                thumbnailHeight: 80,
-                parallelUploads: 20,
-                previewTemplate: previewTemplate,
-                autoQueue: false, // Make sure the files aren't queued until manually added
-                previewsContainer: "#previews", // Define the container to display the previews
-                clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
-            })
-
-            myDropzone.on("addedfile", function (file) {
-                // Hookup the start button
-                file.previewElement.querySelector(".start").onclick = function () { myDropzone.enqueueFile(file) }
-            })
-
-            // Update the total progress bar
-            myDropzone.on("totaluploadprogress", function (progress) {
-                document.querySelector("#total-progress .progress-bar").style.width = progress + "%"
-            })
-
-            myDropzone.on("sending", function (file) {
-                // Show the total progress bar when upload starts
-                document.querySelector("#total-progress").style.opacity = "1"
-                // And disable the start button
-                file.previewElement.querySelector(".start").setAttribute("disabled", "disabled")
-            })
-
-            // Hide the total progress bar when nothing's uploading anymore
-            myDropzone.on("queuecomplete", function (progress) {
-                document.querySelector("#total-progress").style.opacity = "0"
-            })
-
-            // Setup the buttons for all transfers
-            // The "add files" button doesn't need to be setup because the config
-            // `clickable` has already been specified.
-            document.querySelector("#actions .start").onclick = function () {
-                myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED))
-            }
-            document.querySelector("#actions .cancel").onclick = function () {
-                myDropzone.removeAllFiles(true)
-            }
-           // DropzoneJS Demo Code End
+            });
         </script>
 </body>
 

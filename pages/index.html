@@ -26,43 +26,111 @@
     <link href="../assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
     <!-- Custom Styles-->
     <link href="../assets/css/custom-styles.css" rel="stylesheet" />
+        <!-- MDB -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.css" rel="stylesheet !important" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.css" rel="stylesheet" />
+        <link rel="stylesheet"
+            href="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/dist/mdb5/plugins/table-editor.min.css">
+        <link rel="stylesheet"
+            href="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/dist/mdb5/standard/modules/b4bca5d779777cff9d5c51553952a0a1.min.css">
+        <link rel="stylesheet" id="roboto-subset.css-css"
+            href="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/mdb5/fonts/roboto-subset.css?ver=3.9.0-update.5"
+            type="text/css" media="all">
     <title>Dashboard</title>
 </head>
 
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-light bg-gradient-secondary">
         <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
-                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <a class="navbar-brand" href="Caja.html"><strong><i class="icon fa fa-eye"></i> Aplicativo
+                    Rivera</strong></a>
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
             </button>
-            <div class="collapse navbar-collapse">
-                <a class="navbar-brand" href="Caja.html"><strong><i class="icon fa fa-eye"></i> Aplicativo
-                        Rivera</strong></a>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active " aria-current="page" href="index.html"><b>Dashboard</b></a>
                     </li>
+                    <!-- Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-mdb-toggle="dropdown" aria-expanded="false">
+                            <b>Cartera</b>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li class="nav-item">
+                                <a class="nav-link" href="CuadreCartera.html"><b>Cartera</b></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="TablaRelacional.html"><b>Tabla Relacional</b></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="VistaPlano.html"><b>Vista Plano</b></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Dropdown -->
                     <li class="nav-item">
-                        <a class="nav-link" href="Inventario.html"><b>Inventario</b></a>
+                        <a class="nav-link" href="Inventario.html"><b>Control Mecanicos Inventario</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Caja.html"><b>Caja</b></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="TablaRelacional.html"><b>Tabla Relacional</b></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="CuadreCartera.html"><b>Cartera</b></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="404.html"><b>404</b></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="500.html"><b>500</b></a>
+                        <a class="nav-link" href="Caja.html"><b>Ingreso</b></a>
                     </li>
                 </ul>
+                <form class="d-flex input-group w-auto">
+                    <input type="search" class="form-control" placeholder="Buscar" aria-label="Search" />
+                    <button class="btn bg-gradient-orange" type="button" data-mdb-ripple-color="dark">
+                        <b>Buscar</b>
+                    </button>
+                </form>
             </div>
+
+            <!-- Right elements -->
+            <div class="d-flex align-items-center" style="margin: 5px;" id="ocultar">
+                <!-- Notifications -->
+                <div class="dropdown" style="margin: 5px;">
+                    <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
+                        role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge rounded-pill badge-notification bg-danger">1</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                        <li>
+                            <a class="dropdown-item" href="#">Ultimos cambios</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Nuevos registros</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Otros</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Avatar -->
+                <div class="dropdown" style="margin: 5px;">
+                    <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#"
+                        id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                        <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" height="25"
+                            alt="Black and White Portrait of a Man" loading="lazy" />
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                        <li>
+                            <a class="dropdown-item" href="#">Mi perfil</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Configuracion</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="Login.html">Cerrar sesion</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Right elements -->
+        </div>
         </div>
     </nav>
 
@@ -443,6 +511,8 @@
         <!-- Chart Js -->
         <script type="text/javascript" src="assets/js/Chart.min.js"></script>
         <script type="text/javascript" src="assets/js/chartjs.js"></script>
+        <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.js"></script>
 </body>
 
 </html>
